@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat';
+  font-style: normal;
+}
+
+body {
+  background: linear-gradient(180deg, #8892FF 0%, #6D6BE5 18.75%);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-row {
+  padding: 12px;
+  align-self: flex-end;
+  justify-self: flex-start;
+}
+
+.close-row__button {
+  font-size: 24px;
+  line-height: 24px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  background: 0;
+  border: 0;
+  color: #fff;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 4;
+}
+
+.content__img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 64px;
+}
+
+.content__text {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #EDF2FF;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.content__verif-button {
+  width: 336px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 24px;
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 0;
+  font-weight: 600;
+  font-size: 12px;
+  color: #4E5AF2;
+  cursor: pointer;
+  margin-bottom: 24px;
+}
+
+.content__profile-button {
+  width: 336px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 24px;
+  background: 0;
+  border-radius: 20px;
+  border: 1px solid #DCDEFC;
+  font-weight: 600;
+  font-size: 12px;
+  color: #DCDEFC;
+  cursor: pointer;
+  margin-bottom: 24px;
+}

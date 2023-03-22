@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Signup</title>
+</head>
+
+<body class="root">
+  <!-- LEFT -->
+  <section class="left">
+    <h1 class="title">Регистрация пользователя</h1>
+    <p class="paragraph">Заполните информацию о себе, чтобы начать использовать все преимущества платформы</p>
+    <img class="bg-image" src="work.svg" alt="work">
+  </section>
+  <!-- RIGHT -->
+  <section class="right">
+    <form action="/test/" class="form">
+      <h2 class="form__title">Подтверждение телефона </h2>
+      <h3 class="form__subtitle">Мы отправили SMS с 6-значным кодом подтверждения на номер +38 (050) 725 60 09</h3>
+      <div class="form__fields">
+        <!-- email -->
+        <label class="form__field" for="sms">
+          SMS-код
+          <input placeholder="Укажите код" class="form__input" type="number" id="sms" name="sms" required>
+        </label>
+        <div class="form__timer">
+          <img class="form__timer__clock" src="clock.svg">
+          <span id="time" class="form__timer__time">2 мин 55 сек</span>
+        </div>
+      </div>
+      <!-- submit -->
+      <input class="form__submit" type="submit" value="Подтвердить">
+    </form>
+    <div class="right-nav">
+      <button onclick="window.location.href='/test/regestration/index.html'" class="right-nav__exit">
+        <img class="right-nav__exit__img" src="back.svg" alt="">
+        Назад
+      </button>
+    </div>
+  </section>
+
+
+  <script>
+    function setTimer() {
+      let timeLeft = 180;
+      const time = document.getElementById('time')
+      const timer = setInterval(() => {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        time.textContent = `${minutes} мин ${seconds} сек`
+        if (timeLeft === 0) {
+          clearInterval(timer);
+        } else {
+          timeLeft--;
+        }
+      }, 1000);
+    }
+
+    setTimer();
+  </script>
+</body>
+
+</html>

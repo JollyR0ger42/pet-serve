@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/imask"></script>
+  <title>Regestration</title>
+</head>
+
+<body class="root">
+  <!-- LEFT -->
+  <section class="left">
+    <h1 class="title">Регистрация пользователя</h1>
+    <p class="paragraph">Заполните информацию о себе, чтобы начать использовать все преимущества платформы</p>
+    <img class="bg-image" src="work.svg" alt="work">
+  </section>
+  <!-- RIGHT -->
+  <section class="right">
+    <form action="/test/success2/index.html" id="form" class="form">
+      <h2 class="form__title">Профиль пользователя</h2>
+      <div class="form__fields">
+        <!-- name -->
+        <div class="form__fields__name">
+          <label class="form__field" for="name1">
+            <div>Фамилия<span class="required">*</span></div>
+            <input placeholder="Михайлов" class="form__input" type="text" id="name1" name="name1" required>
+          </label>
+          <label class="form__field" for="name2">
+            <div>Имя<span class="required">*</span></div>
+            <input placeholder="Михаил" class="form__input" type="text" id="name2" name="name2" required>
+          </label>
+          <label class="form__field" for="name3">
+            <div>Отчество<span class="required">*</span></div>
+            <input placeholder="Михайлович" class="form__input" type="text" id="name3" name="name3" required>
+          </label>
+        </div>
+        <label class="form__field" for="birthdate">
+          <div>Дата рождения<span class="required">*</span></div>
+          <input onblur="(this.type='text')" onfocus="(this.type='date')" placeholder="10/08/1983" class="form__input"
+            type="text" id="birthdate" name="birthdate" required>
+        </label>
+        <label class="form__field" for="sex">
+          <div>Пол<span class="required">*</span></div>
+          <input onkeydown="return false;" autocomplete="off" placeholder="Выберите пол" class="form__input" type="text"
+            id="sex" name="sex" required>
+          <img id="dropdown" class="form__input__dropdown" src="dropdown.svg">
+          <div id="options" class="form__field__options">
+            <p class="form__field__options__el">Мужчина</p>
+            <p class="form__field__options__el">Женщина</p>
+            <p class="form__field__options__el">Другой</p>
+          </div>
+        </label>
+        <label class="form__field" for="phone">
+          <div>Телефон<span class="required">*</span></div>
+          <input placeholder="+38 (050) 725 60 09" class="form__input" type="text" id="phone" name="phone" required>
+        </label>
+        <label class="form__field" for="email">
+          <div>E-Mail</div>
+          <input placeholder="contactcentre@ukrgasbank.com" class="form__input" type="text" id="email" name="email"
+            disabled>
+        </label>
+      </div>
+    </form>
+    <div class="right-nav">
+      <button onclick="popup.style.display='flex'" class="right-nav__exit">
+        <img class="right-nav__exit__img" src="exit.svg" alt="">
+        Выход
+      </button>
+      <button onclick="onNext()" class="right-nav__next">Далее</button>
+    </div>
+  </section>
+
+  <div id="popup" class="popup">
+    <div class="popup__modal">
+      <button onclick="popup.style.display='none'" class="popup__modal__close">✖</button>
+      <img class="popup__modal__img" src="alert.svg" alt="">
+      <h3 class="popup__modal__title">Подтверждение выхода из аккаунта</h3>
+      <h4 class="popup__modal__subtitle">Вы действительно хотите выйти из своей учетной записи?</h4>
+      <button onclick="window.location.href='/test/'" class="popup__modal__next">Продолжить</button>
+      <button onclick="popup.style.display='none'" class="popup__modal__exit">Выйти</button>
+    </div>
+  </div>
+
+
+  <script>
+    const element = document.getElementById('phone');
+    const form = document.getElementById('form');
+
+    const maskOptions = {
+      mask: '+{38} (000) 000 00 00'
+    };
+    const mask = IMask(element, maskOptions);
+
+    const onNext = () => {
+      if (form.reportValidity()) form.submit()
+    }
+
+    // DROPDOWN
+    const select = document.getElementById('sex');
+    const options = document.getElementById('options');
+    const dropdown = document.getElementById('dropdown');
+
+    select.addEventListener('focus', () => {
+      console.log('focus')
+      if (options.style.display === 'block') {
+        options.style.display = 'none';
+        dropdown.style.transform = 'rotate(0)';
+      } else {
+        options.style.display = 'block';
+        dropdown.style.transform = 'rotate(180deg)';
+      }
+    });
+
+    select.addEventListener('blur', () => {
+      console.log('blur')
+      setTimeout(() => {
+        options.style.display = 'none';
+        dropdown.style.transform = 'rotate(0)';
+        select.blur();
+      }, 100)
+    });
+
+    options.addEventListener('click', (event) => {
+      select.value = event.target.textContent;
+      options.style.display = 'none';
+      dropdown.style.transform = 'rotate(0)';
+      document.activeElement.blur();
+      select.blur();
+    });
+
+    // POPUP
+    const popup = document.getElementById('popup');
+  </script>
+</body>
+
+</html>
