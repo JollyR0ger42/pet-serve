@@ -8,9 +8,6 @@ app.use(compression())
 app.use('/root', express.static('root'));
 app.use('/public', express.static('public'));
 
-app.get("/", (req, res) => {
-    res.send("Express on Vercel");
-  });
 
 app.listen(port);
 console.log('Server started at http://localhost:' + port);
